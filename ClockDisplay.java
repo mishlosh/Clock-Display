@@ -11,6 +11,9 @@
  * 
  * @author Michael Kölling and David J. Barnes
  * @version 2011.07.31
+ * 
+ * @altered by Michal Legocki, 10/1/2018
+ * into a 12-hour displayed clock
  */
 public class ClockDisplay
 {
@@ -39,6 +42,29 @@ public class ClockDisplay
         hours = new NumberDisplay(24);
         minutes = new NumberDisplay(60);
         setTime(hour, minute);
+    }
+    
+    /**
+     * Method to display 12-hour clock
+     * If hours is 0-11, displays 0 as "12" and adds " AM"
+     * if hours is 12-23, displays 13-23 as 1-11 and adds " PM"
+     */
+    public String get12HourInternalDisplay()
+    {
+        if (hours.getValue() < 12)
+        {
+            if (hours.getValue() == 0){
+                return "12 : " + minutes.getDisplayValue() + " AM";
+            }else{
+                return hours.getDisplayValue() + " : " + minutes.getDisplayValue() + " AM";
+            }
+        }else{
+            if (hours.getValue() == 12){
+                return "12 : " + minutes.getDisplayValue() + " PM";
+            }else{
+                return (hours.getValue()%12) + " : " + minutes.getDisplayValue() + " PM";
+            }
+        }
     }
 
     /**
