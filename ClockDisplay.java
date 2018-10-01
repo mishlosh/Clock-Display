@@ -13,7 +13,7 @@
  * @version 2011.07.31
  * 
  * @altered by Michal Legocki, 10/1/2018
- * into a 12-hour displayed clock
+ * into a 12-hour displayed clock using 24 hour internal storage
  */
 public class ClockDisplay
 {
